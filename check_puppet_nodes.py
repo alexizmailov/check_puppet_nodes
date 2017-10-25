@@ -115,6 +115,9 @@ if __name__ == '__main__':
 
     request = "http://{0}:{1}/pdb/query/v4/nodes".format(HOSTNAME, PORT)
     result = get_data(request)
+    if result == -1:
+        print "WARN: {} is unaccessible".format(HOSTNAME)
+        exit(1)
     if FAILED_ONLY:
         EXIT_CODE, EXIT_MSG = check_failed(result)
     else:
